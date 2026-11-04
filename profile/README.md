@@ -1,93 +1,209 @@
-# 🏥 OneCare Systems
+# OneCare – Clinic Integrated Pharmacy Management System
 
-### Integrated Clinic & Pharmacy Management System
+OneCare is a web-based Clinic Integrated Pharmacy Management System developed as part of the **SENG 34213 – System Development Project, University of Kelaniya**.
 
-**Building smarter healthcare workflows through reliable software engineering.**
-
-OneCare Systems is a software engineering project focused on developing an integrated clinic and pharmacy management platform. The system aims to streamline patient management, appointments, consultations, prescriptions, billing, and pharmacy operations through a centralized application.
-
-Our goal is to improve operational efficiency, data consistency, and maintainability by applying software engineering best practices and modern technologies.
+The system integrates clinic operations and pharmacy management, including patient registration, appointments, consultations, prescriptions, medicine dispensing, inventory management, billing, reporting, and an AI-powered chatbot.
 
 ---
 
-## 🎯 Project Objectives
+## 1. Live Application
 
-- 👤 **Patient Management** — Maintain and manage patient information.
-- 📅 **Appointment & Queue Management** — Organize appointments and patient flow.
-- 🩺 **Clinical Management** — Support consultations and prescription workflows.
-- 💊 **Pharmacy Management** — Manage medicines, dispensing, and external prescriptions.
-- 💳 **Billing & Invoicing** — Support consultation billing and payment processing.
-- 🔐 **Security & Access Control** — Enforce authentication and role-based permissions.
-- 📊 **Auditability** — Maintain accountability through audit logging.
-- ⚙️ **Reliable Infrastructure** — Support consistent development and deployment workflows.
-
-## 🛠️ Technology Stack
-
-| Area | Technologies |
+| Environment | URL |
 |---|---|
-| Frontend | React, Tailwind CSS |
-| Backend API | Java, Spring Boot |
-| Chatbot Service | Python, FastAPI |
-| Database | MySQL |
-| Caching | Redis |
-| Authentication | Spring Security, JWT |
-| Testing | JUnit, Vitest, Python testing tools |
-| Infrastructure | Docker, Docker Compose |
-| CI/CD | GitHub Actions |
-| API Documentation | Swagger / OpenAPI |
+| Live Application | http://3.27.171.160/ |
+| Domain URL | http://one-care.tech |
 
-## 🏗️ System Architecture
+---
 
-OneCare follows a modular architecture in which the React frontend communicates with the Spring Boot backend through REST APIs. The backend manages core business logic, authentication, authorization, and database operations. The Python chatbot operates as a separate service accessed through the backend API.
+## 2. GitHub Repositories
+
+The OneCare project is organized into multiple repositories.
+
+| Repository | Description |
+|---|---|
+| [Frontend](https://github.com/OneCareSystems/onecare-frontend) | React-based user interface |
+| [Backend](https://github.com/OneCareSystems/onecare-backend) | Spring Boot REST API and business logic |
+| [Chatbot](https://github.com/OneCareSystems/onecare-chatbot) | Django-based AI chatbot service |
+| [Infrastructure](https://github.com/OneCareSystems/onecare-infra) | Docker Compose and deployment configuration |
+| [Testing](https://github.com/OneCareSystems/onecare-testing) | API and integration testing resources |
+| [Documentation](https://github.com/OneCareSystems/onecare-documents) | SRS, SDS, and project documentation |
+| [GitHub Organization](https://github.com/OneCareSystems) | All OneCare repositories |
+
+For detailed installation instructions, configurations, testing commands, and deployment information, refer to the README file in each repository.
+
+---
+
+## 3. System Architecture
+
+OneCare follows a modular architecture where the frontend communicates with the backend REST API. The backend connects to the MySQL database, Redis, and the separate Django chatbot service.
 
 ```text
-             ┌──────────────────────┐
-             │    React Frontend    │
-             └──────────┬───────────┘
-                        │ REST API
-             ┌──────────▼───────────┐
-             │   Spring Boot API    │
-             └───┬────────┬─────┬───┘
-                 │        │     │
-          ┌──────▼───┐ ┌──▼───┐ ┌▼────────────────┐
-          │  MySQL   │ │Redis │ │ Python Chatbot  │
-          │ Database │ │Cache │ │ Service         │
-          └──────────┘ └──────┘ │ (FastAPI)       │
-                                └─────────────────┘
+             Patients and Staff
+                    |
+                    v
+             React Frontend
+                    |
+                    v
+           Spring Boot Backend
+             /      |       \
+            v       v        v
+          MySQL   Redis   Django Chatbot
+                              |
+                              v
+                      Knowledge Base
+                       and AI Retrieval
 ```
 
-*This diagram illustrates the logical architecture. Actual service connections depend on the deployed configuration.*
+The chatbot operates as a separate service and communicates with the backend through protected service-to-service integration.
 
-## 📂 Repositories
+---
 
-Explore the OneCareSystems repositories:
+## 4. Main Features
 
-- **[onecare-backend](https://github.com/OneCareSystems/onecare-backend)** — Spring Boot REST APIs, business logic, authentication, authorization, and data management.
-- **[onecare-frontend](https://github.com/OneCareSystems/onecare-frontend)** — React-based user interface for clinic and pharmacy workflows.
-- **[onecare-chatbot](https://github.com/OneCareSystems/onecare-chatbot)** — Python-based chatbot service supporting conversational assistance and knowledge-base functionality.
-- **[All Organization Repositories](https://github.com/orgs/OneCareSystems/repositories)** — Explore the organization's available repositories and project modules.
+### Public Patient Portal
+- Patient registration and login
+- Password reset
+- Online appointment booking
+- Clinic information
+- English and Tamil language support
+- Patient chatbot
 
-## 🔒 Engineering Practices
+### Super Admin Module
+- Dashboard
+- User management
+- Role and access control
+- Clinic configuration
+- System maintenance
+- Audit logs
+- Reports
 
-We emphasize maintainable, secure, and testable software through:
+### Admin Module
+- Patient registration and management
+- Appointment management
+- Queue management
+- Billing
+- Clinic reports
+- Knowledge-base management
 
-- Feature-based development and issue tracking.
-- Pull requests and peer code reviews.
-- Protected branches and consistent branch naming.
-- Automated builds, linting, and testing through CI.
-- API validation and centralized error handling.
-- Role-based authorization and secure credential management.
-- Docker-based development environments.
-- Technical documentation and continuous improvement.
+### Doctor Module
+- Doctor dashboard
+- Appointment schedules
+- Patient records
+- Consultations
+- Clinical notes
+- Prescription management
 
-## 👥 Team & Collaboration
+### Pharmacist Module
+- Pharmacist dashboard
+- Prescription dispensing queue
+- Medicine inventory management
+- Stock updates
+- External dispensing
+- Pharmacy reports
 
-OneCare Systems is developed collaboratively as part of a software engineering project at the University of Kelaniya.
+### AI Chatbot
+- English and Tamil query support
+- Knowledge-base-based responses
+- Document and approved URL processing
+- Semantic retrieval using Sentence Transformers and FAISS
+- Medical safety guardrails
 
-We value clear communication, shared ownership, constructive code reviews, and continuous learning throughout the software development lifecycle.
+---
 
-## 🚀 Project Status
+## 5. Technology Stack
 
-**Status:** Under active development.
+| Component | Technologies |
+|---|---|
+| Frontend | React 19, Vite, Redux Toolkit, React Router, Tailwind CSS |
+| Backend | Java 21, Spring Boot 3.5.x, Spring Security, Spring Data JPA |
+| Database | MySQL 8.x |
+| Cache | Redis |
+| Chatbot | Python 3.11, Django 5.2, Django REST Framework |
+| AI Retrieval | Sentence Transformers, FAISS |
+| API Documentation | Swagger / OpenAPI |
+| Frontend Testing | Vitest, React Testing Library, MSW, Playwright |
+| Backend Testing | JUnit 5, Mockito, MockMvc, JaCoCo |
+| DevOps | Docker, Docker Compose, GitHub Actions, Nginx |
 
-Features, integrations, testing, and deployment configurations evolve as implementation progresses.
+---
+
+## 6. Local Development
+
+The infrastructure repository provides the coordinated setup for running the complete application.
+
+**Basic steps:**
+
+1. Clone the required repositories.
+2. Install the prerequisites mentioned in each repository README.
+3. Configure the required environment variables.
+4. Follow the Docker Compose instructions in the [Infrastructure Repository](https://github.com/OneCareSystems/onecare-infra).
+5. Start the application and access the frontend using the local URL.
+
+### Default Local Service Ports
+
+| Service | Port |
+|---|---:|
+| Frontend | 3000 |
+| Backend | 8080 |
+| Chatbot | 8000 |
+| MySQL | 3306 |
+| Redis | 6379 |
+
+Refer to the Infrastructure README for the complete development and deployment setup.
+
+---
+
+## 7. Demo User Accounts
+
+The following demo usernames are available for the corresponding staff roles.
+
+| Role | Username | Password
+| --- | --- | ----
+| Pharmacist | `pharmacist1` | Passw0rd!2026
+| Doctor | `Doctor kuruparan` | Passw0rd!2026
+| Super Admin | `Superadmin` | Passw0rd!2026
+| Admin | `Admin` | 
+
+
+## 8. Security
+
+- Role-based authentication and authorization
+- JWT-based access and refresh tokens
+- Password hashing
+- Protected API endpoints
+- Audit logging
+- Redis-based token revocation
+- Environment-based secret configuration
+- Protected chatbot service integration
+
+**Important:** Never commit passwords, database credentials, JWT secrets, chatbot service tokens, SMTP credentials, or other sensitive configuration values to GitHub.
+
+---
+
+## 9. Testing and CI/CD
+
+The project uses automated testing and GitHub Actions workflows across its repositories.
+
+- Frontend unit and component testing
+- Frontend end-to-end testing with Playwright
+- Backend unit and integration testing
+- API testing
+- Automated build and validation workflows
+
+For current workflow results, visit the Actions tab of the relevant repository.
+
+---
+
+## 10. Project Information
+
+| Item | Details |
+|---|---|
+| Project Name | OneCare – Clinic Integrated Pharmacy Management System |
+| Course | SENG 34213 – System Development Project |
+| Institution | University of Kelaniya |
+| GitHub Organization | [OneCareSystems](https://github.com/OneCareSystems) |
+
+---
+
+**OneCare – Integrated Clinic and Pharmacy Management System**  
+*Simplifying clinic operations and pharmacy management through technology.*
